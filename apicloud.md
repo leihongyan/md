@@ -128,6 +128,11 @@
 		5
             -webkit-flex-direction: column;
             flex-direction: column;
+		6 
+			弹性盒子：
+			-webkit-box-flex: 1; 
+			-webkit-flex: 1;
+			flex: 1;
 ##倒计时
 		var toDouble = function(num){
                 var json;
@@ -174,3 +179,29 @@
 	    var countDownTime = new Date();
         countDownTime.setMinutes(countDownTime.getMinutes()+25);
 	    countDown(countDownTime);
+##前端框架
+- val
+
+		var input=$api.dom("input");
+	   	$api.val(input,"45");
+	   	alert($api.val(input));
+- html	
+
+		var html=$api.dom("p");
+		$api.html(html,'<h1>world</h1>');
+		alert($api.html(html));
+- offset	
+
+ 		
+		var offset=$api.offset(html);
+		var width=offset.w;
+		var height=offset.h;
+		alert(width);
+		alert(offset)
+- setstorage
+    
+ 		$api.setStorage('name','Tom');
+		alert($api.getStorage('name'))
+##防止iOS手机将数字转换成手机号码
+	<meta name="format-detection" content="telephone=no"/>
+	
