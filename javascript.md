@@ -190,3 +190,73 @@
 	在函数lazy_sum中又定义了函数sum，并且，内部函数sum可以引用外部函数lazy_sum的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为“闭包（Closure）”的程序结构拥有极大的威力。
 
 	返回闭包时牢记的一点就是：返回函数不要引用任何循环变量，或者后续会发生变化的变量。
+##复制文本粘贴
+	if(window.clipboardData){
+		//for IE
+		var copyBtn = document.getElementById("copy");
+		copyBtn.onclick = function(){ 
+			var text = $("#copy").attr("data-clipboard-text");
+			window.clipboardData.setData('text',text); 
+			alert("复制成功，内容为： " + text);
+		} 
+	}else{
+		var client = new ZeroClipboard(document.getElementById("copy"));
+		client.on("ready", function(readyEvent) {
+			client.on("aftercopy", function(event) {
+				alert("复制成功，内容为: " + event.data["text/plain"]);
+			});
+		});
+	} 
+
+	<dl>
+		<dt>地址：</dt>
+		<dd>
+			<input type="text" name="address" class="required" size="30" value="<{$row.address}>" id="content" readonly/>
+		</dd>
+	</dl>
+	<dl>
+		<span class="jwd_tishi" id="copy" data-clipboard-target="content">复制地址</span>
+	</dl>
+##闭包
+	for (var i = 0; i < 5; i++) {
+	    (function(j) {  // j = i
+	        setTimeout(function() {
+	            console.log(new Date, j);
+	        }, 1000);
+	    })(i);
+	}
+	
+	console.log(new Date, i);输出为5 0 1 2 3 4
+##jquery源码
+	（function(){
+		(21,94) 定义了一些变量和函数  jQuery=function(){}
+		(96,283) 给JQ对象，添加一些方法和属性
+		(285,347) extend:JQ的继承方法
+		(349,817) jQuery.extend():扩展一些工具方法
+		(877,2856) Sizzle:复杂选择器的实现
+		(2880,3042) Callbacks:回调对象：对函数的统一管理
+		(3043,3183) Deferred:延迟对象：对异步的统一管理
+		(3184,3295) support：功能检测
+		(3308,3652) data():数据缓存
+		(3653,3797) queue():队列管理
+		(3803,4299) attr()  prop() val() addClass()等：对元素属性的操作
+		(4300,5128) on()  trigger() :事件操作的相关方法
+	}）();
+##判断是否是创建标签
+	selector.charAt(0)==='<'&&selector.charAt(selector.length-1)==='>'&&selector.length>=3
+	
+##jquery知识点
+	正则：
+		-webkit-margin-left:webkitMarginLeft
+		/^-ms-/       -ms-margin-left:MsMarginLeft
+		/-([\da-z])/  -2d:2d
+	原型：
+		function Aaa(){}
+		Aaa.prototype.constructor=Aaa;Aaa的原型的构造方法指向Aaa;
+	constructor:防止手动被改，需要重新指定
+##jquery.merge
+	true  可以执行script标签  <\/script>标签需要转义
+	返回一个数组  
+	var arr=['a','b'];
+	var brr=['c','d'];
+	$.merge(arr,brr)将两个数组合并

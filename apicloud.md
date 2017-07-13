@@ -133,6 +133,14 @@
 			-webkit-box-flex: 1; 
 			-webkit-flex: 1;
 			flex: 1;
+		7  
+			-webkit-box-orient:horizontal
+			-webkit-flex-flow:row
+			flex-flow:row
+		8
+			-webkit-box-orient:vertical
+			-webkit-flex-flow:column
+			flex-flow:column
 ##倒计时
 		var toDouble = function(num){
                 var json;
@@ -204,4 +212,6 @@
 		alert($api.getStorage('name'))
 ##防止iOS手机将数字转换成手机号码
 	<meta name="format-detection" content="telephone=no"/>
-	
+##api+vue
+	1. 转义
+		"'xuan_new_qz('+row.uid+',\''+row.nickname+'\')'"
