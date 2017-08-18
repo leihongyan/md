@@ -117,7 +117,10 @@
 			-webkit-justify-content:space-between;
 		2 
 			-webkit-box-align:center;
-			-webkit-align-items: center;
+	        -webkit-align-items: center;
+	        justify-content: center;
+	        -webkit-box-pack:center;
+	        -webkit-justify-content:center;
 		3  	
 			display: -webkit-box;
             display: -webkit-flex;

@@ -284,3 +284,40 @@
 
 		之前:	{{msg | toDou '12' '5'}}
 		现在: 	{{msg | toDou('12','5')}}
+
+#简单的vue使用
+##vue 多图片存储
+	**html**
+		<div v-for="(ii,index1) in rr.img"  :style="style_to(index,index1)" :key="index1"></div>
+	**js**
+	
+		img_zt_to:function(xid,a){
+            if(systemType=='ios'){
+                return this.zhuti_list[xid].img[a];
+            }
+            var url=this.zhuti_list[xid].img[a];
+            Vue.set(vm.zhuti_list[xid],'img_zt'+a,'../../image/loading_1.gif')
+            api.imageCache({
+                url: url
+            }, function(ret, err) {
+                Vue.set(vm.zhuti_list[xid],'img_zt'+a,ret.url);
+            })
+        },
+
+        style_to:function(index1,index2){
+            if(vm.zhuti_list[index1].img.length==1){
+               var aa=this.zhuti_list[index1].img_zt0?this.zhuti_list[index1].img_zt0:this.img_zt_to(index1,0);
+            }else{
+               var aa=eval('this.zhuti_list['+index1+'].img_zt'+index2)?eval('this.zhuti_list['+index1+'].img_zt'+index2):this.img_zt_to(index1,index2);  
+            }
+            if(vm.zhuti_list[index1].img.length>3){
+                var ww='1.6rem'
+            }else{
+                var ww='1.8rem'
+            }
+            return {
+                backgroundImage:'url('+aa+')',width:ww,height:ww
+            };
+        }
+
+	
