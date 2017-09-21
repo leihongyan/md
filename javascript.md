@@ -227,6 +227,11 @@
 	}
 	
 	console.log(new Date, i);输出为5 0 1 2 3 4
+##git 命令
+	git pull
+	git add .
+	git commit -m ''
+	git push
 ##jquery源码
 	（function(){
 		(21,94) 定义了一些变量和函数  jQuery=function(){}

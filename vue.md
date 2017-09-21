@@ -320,4 +320,39 @@
             };
         }
 
-	
+##对话框时间显示
+	**js**
+	time_js:function(x){
+		if(x>0){
+			var time_x=this.qunliao_dhk.lt.list[x].newaddtime-this.qunliao_dhk.lt.list[x-1].newaddtime;
+			if(time_x>180){
+				return true
+			}else{
+				return false
+			}
+		}else{
+			return true
+		}
+	},
+	time_content:function(x){
+		var time_x=Date.parse(new Date())/1000-this.qunliao_dhk.lt.list[x].newaddtime;
+		if(time_x>7200){
+			return this.qunliao_dhk.lt.list[x].addtime
+		}else if(time_x>3600){
+			return '1小时前'
+		}else if(time_x>1800){
+			return '30分钟前'
+		}else if(time_x>900){
+			return '15分钟前'
+		}else if(time_x>600){
+			return '10分钟前'
+		}else if(time_x>300){
+			return '5分钟前'
+		}else if(time_x>180){
+			return '3分钟前'
+		}else{
+			return '3分钟内'
+		}
+	}
+	**HTMl**
+	<p class="dh_time" v-if="time_js(index)"><span>{{time_content(index)}}</span></p>
